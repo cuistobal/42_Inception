@@ -105,20 +105,6 @@ services:
       - inception
     restart: always
 
-  portainer:
-    container_name: portainer
-    build: ./requirements/bonus/portainer
-      #image: portainer:inception
-    image: portainer:inception
-    ports:
-      - "9443:9443"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
-    networks:
-      - inception
-    restart: always
-
   cadvisor:
       container_name: cadvisor
       build: ./requirements/bonus/cadvisor
@@ -157,13 +143,6 @@ volumes:
   mariadb_data_local:
     # Docker-managed volume for MariaDB data (avoids host FS permission issues)
     driver: local
-  portainer_data:
-    name: portainer_data
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: "${HOST_DATA_PATH}/portainer"
  
 secrets:
   mariadb_root_password:

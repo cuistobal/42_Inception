@@ -1,0 +1,23 @@
+FROM alpine:3.17
+
+# Installation de curl et tar, et libc6-compat au cas où le binaire en a besoin
+RUN apk update && apk add --no-cache curl tar libc6-compat
+
+# Téléchargement de la version 2.21.5 (qui supporte l'API Docker récente)
+RUN curl -L https://github.com/portainer/portainer/releases/download/2.21.5/portainer-2.21.5-linux-amd64.tar.gz \
+    -o portainer.tar.gz && \
+    tar xvpfz portainer.tar.gz && \
+    rm portainer.tar.gz && \
+    mv portainer /usr/local/bin/
+
+# Nettoyage pour garder l'image légère (bonnes pratiques 42)
+RUN apk del curl tar
+
+# Portainer a besoin d'un dossier data pour persister ses données
+# C'est important pour le volume mapping dans le docker-compose
+WORKDIR /usr/local/bin/portainer
+
+EXPOSE 9443
+
+# Lancement
+CMD ["./portainer", "--bind=:9443", "--tunnel-port=8000", "--data=/data"]

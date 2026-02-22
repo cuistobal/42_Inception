@@ -1,0 +1,53 @@
+# Secrets
+*env
+srcs/secrets/
+*secret*
+
+# Data directories
+/home/*/data/
+
+# Build / object files
+/build/
+*.o
+*.d
+*.obj
+*.out
+
+# Executable
+/webserv
+
+# Dependency directories
+node_modules/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+#	$(bear -- make re) files
+compile_commands.json
+.cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+*.gcno
+*.gcda
+
+# Temporary
+*~
+*.tmp
+*.swp
+
+# Ignore tags
+tags
+
+# Vagrant
+.vagrant

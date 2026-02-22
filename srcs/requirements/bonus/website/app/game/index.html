@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe - Minimax (Embedded)</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .source-wrap { margin-top: 1rem; }
+    .source-toggle { margin-bottom: .5rem; }
+    pre { white-space: pre-wrap; word-wrap: break-word; background: #222; color: #eee; padding: 1rem; border-radius: 6px; overflow-x: auto }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Tic Tac Toe - Minimax AI (Embedded)</h1>
+    <section id="score-section">
+      <div id="elo-display">ELO: <span id="elo-value">1200</span></div>
+      <div id="stats">
+        <span id="games-played">0 parties</span> |
+        <span id="wins">0 victoires</span> |
+        <span id="losses">0 défaites</span> |
+        <span id="draws">0 nuls</span>
+      </div>
+      <div id="elo-history-section">
+        <ul id="elo-history" style="padding-left:1em;margin:0.5em 0 0 0;font-size:0.95em;"></ul>
+      </div>
+    </section>
+    <section id="game-board-section">
+      <div id="game-board" class="board"></div>
+      <div id="game-status"></div>
+    </section>
+    <section id="controls">
+      <button id="new-game">Nouvelle partie</button>
+    </section>
+
+    <div class="source-wrap">
+      <button class="source-toggle" id="toggle-source">Afficher le code JS</button>
+      <pre id="source" hidden></pre>
+    </div>
+  </main>
+  <script src="game.js"></script>
+  <script>
+    document.getElementById('toggle-source').addEventListener('click', async () => {
+      const pre = document.getElementById('source');
+      if (!pre.innerText) {
+        try {
+          const r = await fetch('game.js');
+          const code = await r.text();
+          pre.innerText = code;
+        } catch (err) {
+          pre.innerText = 'Erreur récupération du code: ' + err.message;
+        }
+      }
+      pre.hidden = !pre.hidden;
+    });
+  </script>
+</body>
+</html>

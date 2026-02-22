@@ -87,4 +87,23 @@ A tool to monitor hardware usage from your containers. i would have implemented
 Vault if it wasn't such a burden (especially without proper SSL certificate
 management)
 
+# FTP Server
 
+The File Transfert Protocol is used tooooooo ...... transfert files !
+You can use the service through the following commands:
+```bash
+ftp -p 127.0.0.1 21
+# login: <FTP_USER>
+# password: <FTP_PASSWORD>
+
+lftp -u <FTP_USER>,<FTP_PASSWORD> -p 21 127.0.0.1
+```
+
+Inside the server, you can use the following commands to access and modify 
+ressources:
+```bash
+get <file from the server>
+put <file from your device>
+```
+
+Filezilla is quite a banger for those purposes -Not available on 42's dumps atm-

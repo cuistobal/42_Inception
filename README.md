@@ -25,7 +25,7 @@ This project teaches best practices for:
 
 1. **Clone the repository** (if not already done):
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/cuistobal/42_Inception.git
    cd 42_Inception
    ```
 
